@@ -18,13 +18,12 @@ Type "help" for help.
 
 CREATE DATABASE man_dev;
 CREATE DATABASE man_test;
-```
+``` -->
 
 ```
 npm install
-npm run migrate:dev
-npm run start:dev
-``` -->
+npm run dev
+```
 
 ### Built with
 

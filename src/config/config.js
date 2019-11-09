@@ -18,19 +18,6 @@ module.exports = {
     ],
   },
 
-  aws: {
-    dev: {
-      privateKeyPath: "/Users/sushinpv/Documents/Server Keys/TGA/AWS/pk-APKAJBS26LQZGQLGTJRQ.pem",
-      keyPairID: "APKAJBS26LQZGQLGTJRQ",
-      CloudfrontUrl: "https://d30td9wseux77f.cloudfront.net/",
-    },
-    prod: {
-      privateKeyPath: "/Users/sushinpv/Documents/Server Keys/TGA/TGA_PROD/pk-APKAJNEK6URYZFOIZHSA.pem",
-      keyPairID: "APKAJNEK6URYZFOIZHSA",
-      CloudfrontUrl: "https://dtrf6v05dfhc2.cloudfront.net/",
-    },
-  },
-
   api: {
     version: "1",
   },

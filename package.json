@@ -17,7 +17,7 @@
     "migrate:test": "npm run build && cross-env NODE_ENV=test dotenv -e .env sequelize db:migrate --env test",
     "migrate:prod": "sequelize db:migrate --env production",
     "start:dev": "NODE_PATH=./src cross-env NODE_ENV=development nodemon",
-    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix",
+    "lint": "eslint '*/**/*.{js,ts}' --quiet --fix",
     "lint:staged": "lint-staged",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
@@ -30,8 +30,10 @@
     "dev": "concurrently \"tsc -w\" \"nodemon dist/src/app.js\"",
     "migrate": "NODE_PATH=. node migrate.js"
   },
-
-  "pre-commit": "lint",
+  "lint-staged": {
+    "*.ts": "npm run lint"
+  },
+  "pre-commit": "lint:staged",
   "repository": {
     "type": "git",
     "url": "https://github.com/afhm/man-server.git"

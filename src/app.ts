@@ -4,6 +4,17 @@ import express = require("express");
 const app: express.Application = express();
 import { v1Router } from "./api/v1";
 
+process.on("uncaughtException", e => {
+  console.log(e);
+  process.exit(1);
+});
+
+process.on("unhandledRejection", e => {
+  console.log(e);
+  process.exit(1);
+});
+require("./db").initConnection();
+
 app.use("/api/v1", v1Router);
 const port = process.env.PORT || 5000;
 

@@ -1,5 +1,5 @@
 const Tabel = require("tabel");
-const config = require("../config").orm;
+const config = require("./config").orm;
 
 const loadTables = require("./tables");
 

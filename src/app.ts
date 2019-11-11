@@ -1,23 +1,43 @@
-import express = require("express");
+import cookieParser from "cookie-parser";
+import express from "express";
+import Controller from "./interfaces/controller.interface";
+import errorMiddleware from "./middleware/error.middleware";
 
-// Create a new express application instance
-const app: express.Application = express();
-import { v1Router } from "./api/v1";
+class App {
+  private app: express.Application;
 
-process.on("uncaughtException", e => {
-  console.log(e);
-  process.exit(1);
-});
+  constructor(controllers: Controller[]) {
+    this.app = express();
 
-process.on("unhandledRejection", e => {
-  console.log(e);
-  process.exit(1);
-});
-require("./db").initConnection();
+    this.initializeMiddlewares();
+    this.initializeControllers(controllers);
+    this.initializeErrorHandling();
+  }
 
-app.use("/api/v1", v1Router);
-const port = process.env.PORT || 5000;
+  public listen() {
+    this.app.listen(process.env.PORT, () => {
+      console.log(`[App]: listening on the port ${process.env.PORT}`);
+    });
+  }
 
-app.listen(port, function() {
-  console.info(`[App]: Listening on port ${port}!`);
-});
+  public getServer() {
+    return this.app;
+  }
+
+  private initializeMiddlewares() {
+    this.app.use(express.json({ limit: "10kb" }));
+    this.app.use(cookieParser());
+  }
+
+  private initializeErrorHandling() {
+    this.app.use(errorMiddleware);
+  }
+
+  private initializeControllers(controllers: Controller[]) {
+    controllers.forEach(controller => {
+      this.app.use("/", controller.router);
+    });
+  }
+}
+
+export default App;

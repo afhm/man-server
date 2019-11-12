@@ -16,6 +16,14 @@
 $ docker-compose up -d
 ```
 
+Or
+
+```sh
+$ docker-compose up
+```
+
+If logs are needed
+
 Access `http://localhost:5000/users` and you're ready to go!
 
 ## Application Setup (Development)

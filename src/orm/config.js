@@ -2,13 +2,7 @@ module.exports = {
   orm: {
     db: {
       client: "postgresql",
-      connection: {
-        database: process.env.POSTGRES_DB,
-        host: process.env.POSTGRES_HOST,
-        port: process.env.POSTGRES_PORT,
-        user: process.env.POSTGRES_USER,
-        password: process.env.POSTGRES_PASSWORD,
-      },
+      connection: process.env.POSTGRES_URI,
       pool: {
         min: 2,
         max: 10,
@@ -16,7 +10,7 @@ module.exports = {
       migrations: "knex_migrations",
     }, // redis config is optional, is used for caching by tabel
     redis: {
-      host: "localhost",
+      host: "redis",
       port: "6379",
       keyPrefix: "tga.api.",
     },

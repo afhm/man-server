@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import Controller from "./interfaces/controller.interface";
 import errorMiddleware from "./middleware/error.middleware";
+const morgan = require("morgan");
 
 class App {
   private app: express.Application;
@@ -16,7 +17,7 @@ class App {
 
   public listen() {
     this.app.listen(process.env.PORT, () => {
-      console.log(`[App]: listening on the port ${process.env.PORT}`);
+      console.log(`[App]: Listening on port ${process.env.PORT}!`);
     });
   }
 
@@ -25,6 +26,7 @@ class App {
   }
 
   private initializeMiddlewares() {
+    this.app.use(morgan("combined"));
     this.app.use(express.json({ limit: "10kb" }));
     this.app.use(cookieParser());
   }

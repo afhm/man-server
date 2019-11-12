@@ -27,8 +27,7 @@ import App from "./app";
 // import AuthenticationController from "./authentication/authentication.controller";
 import UserController from "./user/user.controller";
 import validateEnv from "./utils/validateEnv";
-
-validateEnv();
+// validateEnv();
 
 (async () => {
   require("./db").initConnection();

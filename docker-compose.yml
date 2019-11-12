@@ -1,0 +1,36 @@
+version: "3.6"
+
+services:
+  man-server:
+    container_name:
+      backend
+      # image: node:dubnium-buster
+    build: ./
+    command: npm run dev
+    working_dir: /usr/src/man-server
+    environment:
+      POSTGRES_URI: postgres://postgres:123@postgres:5432/man_dev
+      REDIS_URI: redis://redis:6379
+    links:
+      - postgres
+      - redis
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/usr/src/man-server
+
+  # Postgres
+  postgres:
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: man_dev
+      POSTGRES_HOST: postgres
+    build: ./postgres
+    ports:
+      - "5432:5432"
+
+  # Redis
+  redis:
+    image: redis:latest
+    command: ["redis-server", "--bind", "redis", "--port", "6379"]

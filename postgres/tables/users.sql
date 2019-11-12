@@ -1,0 +1,10 @@
+BEGIN TRANSACTION;
+
+CREATE TABLE users (
+  id serial PRIMARY KEY NOT NULL,
+  username VARCHAR(1000) NOT NULL,
+  email VARCHAR(1000) NOT NULL,
+  password VARCHAR(1000)
+);
+
+COMMIT;

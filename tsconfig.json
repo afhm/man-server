@@ -2,11 +2,11 @@
   "compilerOptions": {
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
-    "target": "ES2017",
+    "target": "ES2015",
     /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
     "module": "commonjs",
     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
-    "lib": ["dom", "es2017"],
+    "lib": ["es6", "dom"],
     /* Specify library files to be included in the compilation. */
     "allowJs": true,
     /* Allow javascript files to be compiled. */
@@ -46,7 +46,7 @@
     // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
 
     /* Module Resolution Options */
-    // "moduleResolution": "node",
+    "moduleResolution": "node",
     /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     // "baseUrl": "./src",
     /* Base directory to resolve non-absolute module names. */

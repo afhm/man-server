@@ -11,6 +11,7 @@ services:
     environment:
       POSTGRES_URI: postgres://postgres:123@postgres:5432/man_dev
       REDIS_URI: redis://redis:6379
+      JWT_SECRET: asdsf
     links:
       - postgres
       - redis

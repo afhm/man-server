@@ -24,15 +24,14 @@
 
 import "dotenv/config";
 import App from "./app";
-// import AuthenticationController from "./authentication/authentication.controller";
+import AuthenticationController from "./authentication/authentication.controller";
 import UserController from "./user/user.controller";
 import validateEnv from "./utils/validateEnv";
 // validateEnv();
 
 (async () => {
   require("./db").initConnection();
-  // const app = new App([new UserController(), new AuthenticationController()]);
+  const app = new App([new UserController(), new AuthenticationController()]);
 
-  const app = new App([new UserController()]);
   app.listen();
 })();

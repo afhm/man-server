@@ -1,10 +1,10 @@
 function up(knex) {
   return knex.schema.createTable("users", t => {
-    t.uuid("id").primary();
+    t.increments("id").primary();
     t.text("username").unique();
     t.text("email").unique();
-    t.text("hashed_password");
-    t.timestamps();
+    t.text("password");
+    // t.timestamps();
   });
 }
 

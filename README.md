@@ -42,6 +42,8 @@ CREATE DATABASE man_dev;
 CREATE DATABASE man_test;
 ``` -->
 
+Switch to dev-local branch to run without docker
+
 ```
 npm install
 npm run dev

@@ -1,13 +1,13 @@
 const { Client } = require("pg");
 const config = require("../config/config").orm.db.connection;
-// const client = new Client({
-//   database: config.database,
-//   host: config.host,
-//   port: config.port,
-//   user: config.user,
-//   password: config.password,
-// });
-const client = new Client(process.env.POSTGRES_URI);
+const client = new Client({
+  database: config.database,
+  host: config.host,
+  port: config.port,
+  user: config.user,
+  password: config.password,
+});
+// const client = new Client(process.env.POSTGRES_URI);
 
 function initConnection() {
   client

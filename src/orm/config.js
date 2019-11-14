@@ -2,7 +2,13 @@ module.exports = {
   orm: {
     db: {
       client: "postgresql",
-      connection: process.env.POSTGRES_URI,
+      connection: {
+        database: "man_dev",
+        host: "localhost",
+        port: 5432,
+        user: "postgres",
+        password: 123,
+      },
       pool: {
         min: 2,
         max: 10,

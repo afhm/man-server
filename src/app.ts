@@ -1,7 +1,7 @@
 import cookieParser from "cookie-parser";
 import express from "express";
-import Controller from "./interfaces/controller.interface";
-import errorMiddleware from "./middleware/error.middleware";
+import Controller from "./api/interfaces/controller.interface";
+import errorMiddleware from "./api/middlewares/error.middleware";
 const morgan = require("morgan");
 
 class App {

@@ -1,4 +1,4 @@
-const { table } = require("../orm");
+const { table } = require("../../orm");
 // const { pgQuery } = require("../db");
 
 export default class UserRepo {

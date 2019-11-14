@@ -1,10 +1,10 @@
 import { NextFunction, Response } from "express";
 import * as jwt from "jsonwebtoken";
-import AuthenticationTokenMissingException from "../exceptions/AuthenticationTokenMissingException";
-import WrongAuthenticationTokenException from "../exceptions/WrongAuthenticationTokenException";
+import AuthenticationTokenMissingException from "../../exceptions/AuthenticationTokenMissingException";
+import WrongAuthenticationTokenException from "../../exceptions/WrongAuthenticationTokenException";
 import DataStoredInToken from "../interfaces/dataStoredInToken";
 import RequestWithUser from "../interfaces/requestWithUser.interface";
-const { table } = require("../orm");
+const { table } = require("../../orm");
 
 async function authMiddleware(request: RequestWithUser, response: Response, next: NextFunction) {
   const cookies = request.cookies;

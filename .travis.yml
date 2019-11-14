@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - "node"
+before_install:
+  - npm install -g yarn
+  - psql -c 'create database man_dev;' -U postgres
+install:
+  - openssl aes-256-cbc -K $encrypted_000a4924df7d_key -iv $encrypted_000a4924df7d_iv -in git_deploy_key.enc -out /tmp/git_deploy_key -d
+  - chmod 600 /tmp/git_deploy_key
+  - echo 'echo ${SSH_PASSPHRASE}' > /tmp/askpass && chmod +x /tmp/askpass
+  - eval "$(ssh-agent -s)"
+  - DISPLAY=":0.0" SSH_ASKPASS="/tmp/askpass" setsid ssh-add /tmp/git_deploy_key </dev/null
+  - yarn
+# script:
+#   - npm run test
+# after_script:
+#   - npm run coveralls
+after_success:
+  - npm run travis-deploy-once "npm run semantic-release"
+cache:
+  yarn: true
+  directories:
+    - node_modules
+services:
+  - postgresql
+  - redis-server

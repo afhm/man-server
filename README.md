@@ -24,7 +24,7 @@ $ docker-compose up
 
 If logs are needed
 
-Access `http://localhost:5000/users` and you're ready to go!
+Access `http://localhost:5000/api/v1/users` and you're ready to go!
 
 ## Application Setup (Development)
 
@@ -41,6 +41,8 @@ Type "help" for help.
 CREATE DATABASE man_dev;
 CREATE DATABASE man_test;
 ``` -->
+
+Switch to dev-local branch to run without docker
 
 ```
 npm install

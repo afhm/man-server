@@ -1,7 +1,7 @@
 import * as express from "express";
-import Controller from "../interfaces/controller.interface";
-import validationMiddleware from "../middleware/validation.middleware";
-import User from "../user/user.dto";
+import Controller from "../api/interfaces/controller.interface";
+import validationMiddleware from "../api/middlewares/validation.middleware";
+import User from "../api/user/user.dto";
 import AuthenticationService from "./authentication.service";
 
 class AuthenticationController implements Controller {

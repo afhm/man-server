@@ -2,13 +2,13 @@ import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 // import { getRepository } from "typeorm";
 import UserWithThatEmailAlreadyExistsException from "../exceptions/UserWithThatEmailAlreadyExistsException";
-import DataStoredInToken from "../interfaces/dataStoredInToken";
-import TokenData from "../interfaces/tokenData.interface";
-import User from "../user/user.dto";
+import DataStoredInToken from "../api/interfaces/dataStoredInToken";
+import TokenData from "../api/interfaces/tokenData.interface";
+import User from "../api/user/user.dto";
 const { table } = require("../orm");
-import userRepo from "../user/user.repo";
-import UserRepo from "../user/user.repo";
-import to from "../utils/to";
+import userRepo from "../api/user/user.repo";
+import UserRepo from "../api/user/user.repo";
+import catchAsync from "../utils/catchAsync";
 
 class AuthenticationService {
   public async register(userData: User) {
@@ -26,7 +26,7 @@ class AuthenticationService {
     const tokenData = this.createToken(userD);
     const cookie = this.createCookie(tokenData);
 
-    await to(UserRepo.createUser(userD));
+    await catchAsync(UserRepo.createUser(userD));
     return {
       cookie,
       userD,

@@ -13,8 +13,8 @@ import to from "../utils/to";
 class UserController implements Controller {
   public path = "/users";
   public router = express.Router();
-  // private post = postModel;
-
+  private err;
+  private users;
   constructor() {
     this.initializeRoutes();
   }
@@ -25,23 +25,20 @@ class UserController implements Controller {
   }
 
   private getAllUsers = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    let err, users;
-    [err, users] = await to(UserRepo.getAllUsers());
-    if (!users) {
+    [this.err, this.users] = await to(UserRepo.getAllUsers());
+    if (this.err) {
       next(new NotAuthorizedException());
     }
 
-    res.send(users);
+    res.send(this.users);
   };
   private createUser = async (req: express.Request, res: express.Response, next: NextFunction) => {
-    let err, user;
     const userData: userDto = req.body;
-    [err, user] = await to(UserRepo.createUser(userData));
-    if (err) {
+    [this.err, this.users] = await to(UserRepo.createUser(userData));
+    if (this.err) {
       next(new UserWithThatEmailAlreadyExistsException(userData.email));
-    } else {
-      res.send(user);
     }
+    res.send(this.users);
   };
 }
 

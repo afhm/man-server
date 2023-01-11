@@ -67,7 +67,7 @@
     "express-rate-limit": "^5.0.0",
     "helmet": "^3.21.2",
     "jest": "^24.9.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "knex": "^0.20.1",
     "nodemon": "^1.19.4",
     "pg": "^7.12.1",
